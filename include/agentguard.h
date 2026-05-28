@@ -2,7 +2,7 @@
  * @file agentguard.h
  * @brief AgentGuard-C - Monitor de seguridad en tiempo de ejecución para agentes de IA
  * 
- * Software académico inspirado en:
+ * Software inspirado en:
  *   - Tsinghua University (OpenClaw/ClawGuard, SDFUZZ, LABRADOR)
  *   - ETH Zurich (eBPF-PATROL, Grupo de sistemas seguros y confiables)
  *   - CMU (Aegis-4, SEI)
