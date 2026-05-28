@@ -69,7 +69,7 @@ int main(int argc, char **argv) {
     /* Imprime banner */
     ag_print_banner();
 
-    /* Configurar manejadores de señales */
+    /* Configura manejadores de señales */
     signal(SIGINT,  ag_signal_handler);
     signal(SIGTERM, ag_signal_handler);
     signal(SIGQUIT, ag_signal_handler);
@@ -416,7 +416,7 @@ void ag_signal_handler(int sig) {
             break;
 
         case SIGCHLD:
-            /* Recolectar procesos hijo terminados */
+            /* Recolecta procesos hijo terminados */
             while (waitpid(-1, NULL, WNOHANG) > 0);
             break;
 
