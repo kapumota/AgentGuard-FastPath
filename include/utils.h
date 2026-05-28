@@ -1,6 +1,6 @@
 /**
  * @file utils.h
- * @brief Funciones utilitarias and data structures
+ * @brief Funciones utilitarias y estructura de datos
  */
 
 #ifndef AG_UTILS_H
