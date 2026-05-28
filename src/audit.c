@@ -194,7 +194,7 @@ int ag_audit_generate_evidence(const char *framework, const char *output_path) {
     ag_json_add_int(buf, sizeof(buf), &pos, "alerts", g_ctx.alert_count);
     ag_json_add_int(buf, sizeof(buf), &pos, "audit_entries", g_audit.total_entries);
 
-    /* Agregaa referencias universitarias */
+    /* Agrega referencias */
     ag_json_begin_object(buf, sizeof(buf), &pos); /* metodología */
     /* (simplificado; en producción se agregarían referencias completas) */
     ag_json_end_object(buf, sizeof(buf), &pos);
