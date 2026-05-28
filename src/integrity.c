@@ -52,17 +52,17 @@ int ag_integrity_add_file(const char *path) {
     rec->is_directory = S_ISDIR(st.st_mode);
     rec->is_critical = false;
 
-    /* Calcular hash */
+    /* Calcula el hash */
     if (!rec->is_directory) {
         if (ag_hash_file(path, rec->hash) != 0) {
             ag_log(AG_LOG_WARN, "No se pudo calcular hash: %s", path);
-            strcpy(rec->hash, "ERROR");
+            ag_strlcpy(rec->hash, "ERROR", sizeof(rec->hash));
         }
     } else {
-        strcpy(rec->hash, "DIRECTORIO");
+        ag_strlcpy(rec->hash, "DIRECTORIO", sizeof(rec->hash));
     }
 
-    strcpy(rec->hash_algo, "SHA256");
+    ag_strlcpy(rec->hash_algo, "SHA256", sizeof(rec->hash_algo));
     g_integrity.record_count++;
 
     ag_log(AG_LOG_DEBUG, "Agregado a la base de integridad: %s (hash=%s)", path, rec->hash);
@@ -76,7 +76,7 @@ int ag_integrity_add_directory(const char *path, bool recursive) {
         return -1;
     }
 
-    /* Agregar el propio directorio */
+    /* Agrega el propio directorio */
     ag_integrity_add_file(path);
 
     if (recursive) {
@@ -185,7 +185,7 @@ int ag_integrity_check_all(void) {
 }
 
 void ag_integrity_print_baseline(void) {
-    printf("\n=== Línea base de integridad ===\n");
+    printf("\n-> Línea base de integridad\n");
     printf("%-50s %-12s %-10s %-10s %s\n",
            "RUTA", "TIPO", "TAMAÑO", "PERMISOS", "HASH");
     printf("%s\n", "--------------------------------------------------------------------------------");
@@ -215,7 +215,7 @@ int ag_integrity_create_baseline(void) {
 
     ag_integrity_print_baseline();
 
-    /* Guardar en archivo */
+    /* Guarda en el archivo */
     char baseline_path[AG_MAX_PATH_LEN];
     snprintf(baseline_path, sizeof(baseline_path),
              "/var/lib/agentguard/baseline-%ld.json", time(NULL));
