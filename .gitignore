@@ -1,0 +1,23 @@
+# Artefactos de compilación
+build/
+bin/
+*.o
+*.a
+*.so
+agentguard
+
+# Registros
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Binarios de prueba
+tests/test_agent
+
+# Valgrind
+vgcore.*

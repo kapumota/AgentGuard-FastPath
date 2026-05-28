@@ -1,0 +1,57 @@
+name: AgentGuard-C CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar dependencias
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc make
+
+      - name: Compilar
+        run: make
+
+      - name: Ejecutar pruebas
+        run: make test
+
+      - name: Revisar fugas de memoria (valgrind)
+        run: |
+          sudo apt-get install -y valgrind
+          valgrind --leak-check=full --error-exitcode=1 ./bin/agentguard --help || true
+
+      - name: Subir artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: agentguard-binary
+          path: bin/agentguard
+
+  security-scan:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Ejecutar CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: cpp
+
+      - name: Compilar for CodeQL
+        run: make
+
+      - name: Analizar con CodeQL
+        uses: github/codeql-action/analyze@v3
+
+      - name: Ejecutar Semgrep
+        uses: returntocorp/semgrep-action@v1
+        with:
+          config: p/security-audit

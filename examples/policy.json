@@ -1,0 +1,31 @@
+{
+  "sensitive_files": [
+    "/etc/passwd",
+    "/etc/shadow",
+    "/home/*/.ssh/*"
+  ],
+  "blocked_domains": [
+    "malicious.example",
+    "evil.test"
+  ],
+  "blocked_ips": [
+    "45.90.10.2",
+    "203.0.113.77"
+  ],
+  "watched_processes": [
+    "python",
+    "curl",
+    "bash"
+  ],
+  "risk_weights": {
+    "watched_process": 10,
+    "sensitive_file": 25,
+    "blocked_ip": 35,
+    "blocked_domain": 35,
+    "network_after_file": 30,
+    "high_unique_destinations": 15,
+    "high_event_volume": 10,
+    "high_unique_destination_threshold": 10,
+    "high_event_volume_threshold": 100
+  }
+}

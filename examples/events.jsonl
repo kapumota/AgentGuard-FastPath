@@ -1,0 +1,7 @@
+{"time":"2026-05-23T10:00:01Z","pid":123,"process":"python","event":"open","file":"/etc/passwd"}
+{"time":"2026-05-23T10:00:02Z","pid":123,"process":"python","event":"connect","dst":"45.90.10.2"}
+{"time":"2026-05-23T10:00:03Z","pid":200,"process":"curl","event":"connect","domain":"malicious.example"}
+{"time":"2026-05-23T10:00:04Z","pid":201,"process":"nginx","event":"open","file":"/var/log/nginx/access.log"}
+{"time":"2026-05-23T10:00:05Z","pid":300,"process":"bash","event":"open","file":"/home/alumno/.ssh/id_rsa"}
+{"time":"2026-05-23T10:00:06Z","pid":300,"process":"bash","event":"connect","dst":"198.51.100.8"}
+{"time":"2026-05-23T10:00:07Z","pid":301,"process":"node","event":"connect","ip":"203.0.113.77"}

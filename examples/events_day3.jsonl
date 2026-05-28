@@ -1,0 +1,12 @@
+{"time":"2026-05-23T10:00:01","pid":123,"process":"python","event":"open","file":"/etc/passwd"}
+{"time":"2026-05-23T10:00:02","pid":123,"process":"python","event":"open","file":"/home/alice/.ssh/id_rsa"}
+{"time":"2026-05-23T10:00:03","pid":123,"process":"python","event":"connect","dst":"45.90.10.2","ip":"45.90.10.2"}
+{"time":"2026-05-23T10:00:04","pid":123,"process":"python","event":"connect","dst":"malicious.example","domain":"malicious.example"}
+{"time":"2026-05-23T10:01:01","pid":210,"process":"nginx","event":"open","file":"/var/log/nginx/access.log"}
+{"time":"2026-05-23T10:01:02","pid":210,"process":"nginx","event":"connect","dst":"10.0.0.15","ip":"10.0.0.15"}
+{"time":"2026-05-23T10:02:01","pid":333,"process":"curl","event":"connect","dst":"updates.example.org","domain":"updates.example.org"}
+{"time":"2026-05-23T10:02:02","pid":333,"process":"curl","event":"connect","dst":"45.90.10.2","ip":"45.90.10.2"}
+{"time":"2026-05-23T10:03:01","pid":444,"process":"bash","event":"open","file":"/tmp/build.log"}
+{"time":"2026-05-23T10:03:02","pid":444,"process":"bash","event":"open","file":"/home/bob/.ssh/config"}
+{"time":"2026-05-23T10:03:03","pid":444,"process":"bash","event":"connect","dst":"example.com","domain":"example.com"}
+{"time":"2026-05-23T10:04:01","pid":555,"process":"agent","event":"open","file":"/opt/agent/state.db"}
