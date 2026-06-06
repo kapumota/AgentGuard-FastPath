@@ -92,7 +92,7 @@ release: LDFLAGS = -lssl -lcrypto -s
 release: all
 
 benchmark: all
-	@echo "Benchmark grande de AgentGuard FastPath v1.1 final"
+	@echo "Benchmark grande de AgentGuard FastPath"
 	@mkdir -p $(BENCH_DIR)
 	$(BINDIR)/agfast generate --events 10000 --output $(BENCH_DIR)/events_10000.jsonl --malicious-ratio 0.05
 	$(BINDIR)/agfast generate --events 100000 --output $(BENCH_DIR)/events_100000.jsonl --malicious-ratio 0.05
