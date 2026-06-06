@@ -5,7 +5,7 @@
  * Inspirado en:
  *   - CMU Aegis-4: trazas de auditoría para operaciones defensivas de ciberseguridad
  *   - Stanford: gobernanza de IA y cumplimiento
- *   - ETH Zurich: evidencia estructurada para sistemas confiables
+ *   - ETH Zurich: evidencia estructurada para sistemas confiables.
  */
 
 #ifndef AG_AUDIT_H
