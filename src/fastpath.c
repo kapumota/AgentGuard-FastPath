@@ -12,8 +12,9 @@
  * subpasos posteriores de la Fase 2.
  */
 
-#include "agfast_parts/common.c"
-#include "agfast_parts/string_list.c"
+#include "common.h"
+#include "string_list.h"
+
 #include "agfast_parts/sketches.c"
 #include "agfast_parts/policy.c"
 #include "agfast_parts/parser.c"

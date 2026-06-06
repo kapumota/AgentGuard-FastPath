@@ -7,7 +7,7 @@
  */
 
 static void print_usage(const char *prog) {
-    printf("AgentGuard FastPath v%s\n", AGF_VERSION);
+    printf("%s %s\n", AGF_APP_NAME, AGF_VERSION);
     printf("Analizador de eventos de seguridad con Bloom Filter, Count-Min Sketch, HyperLogLog, riesgo, timeline, HTML y CSV.\n\n");
     printf("Uso:\n");
     printf("  %s analyze <events.jsonl|events.csv> --policy <policy.json> [--risk] [--window-events <n>] [--report <report.json>] [--html <report.html>] [--alerts-csv <alerts.csv>]\n", prog);
@@ -54,7 +54,7 @@ int main(int argc, char **argv) {
 
     if (argc < 2) { print_usage(argv[0]); return 1; }
     if (strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "-h") == 0) { print_usage(argv[0]); return 0; }
-    if (strcmp(argv[1], "--version") == 0 || strcmp(argv[1], "-V") == 0) { printf("AgentGuard FastPath v%s\n", AGF_VERSION); return 0; }
+    if (strcmp(argv[1], "--version") == 0 || strcmp(argv[1], "-V") == 0) { printf("%s %s\n", AGF_APP_NAME, AGF_VERSION); return 0; }
 
     enum { MODE_ANALYZE, MODE_STATS, MODE_GRAPH, MODE_TIMELINE, MODE_GENERATE, MODE_TAIL, MODE_SIMILARITY, MODE_CHECK_FILE, MODE_CHECK_IP, MODE_CHECK_DOMAIN } mode;
     if (strcmp(argv[1], "analyze") == 0) mode = MODE_ANALYZE;
@@ -131,7 +131,7 @@ int main(int argc, char **argv) {
             case 'F': follow = true; break;
             case 'D': delete_test = true; break;
             case 'h': print_usage(argv[0]); return 0;
-            case 'V': printf("AgentGuard FastPath v%s\n", AGF_VERSION); return 0;
+            case 'V': printf("%s %s\n", AGF_APP_NAME, AGF_VERSION); return 0;
             default: print_usage(argv[0]); return 1;
         }
     }

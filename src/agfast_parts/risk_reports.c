@@ -336,7 +336,7 @@ static void write_html_report(const char *path, const stats_t *stats, const tele
     if (!out) die_errno("no se pudo escribir reporte HTML");
     fprintf(out, "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>AgentGuard FastPath</title>");
     fprintf(out, "<style>body{font-family:system-ui,Arial,sans-serif;margin:32px;line-height:1.45}table{border-collapse:collapse;width:100%%;margin:12px 0}td,th{border:1px solid #ccc;padding:6px;text-align:left}code,pre{background:#f3f3f3;padding:2px 4px}.critical{font-weight:bold}.card{border:1px solid #ddd;border-radius:10px;padding:14px;margin:14px 0}</style></head><body>");
-    fprintf(out, "<h1>AgentGuard FastPath v%s</h1>", AGF_VERSION);
+    fprintf(out, "<h1>%s %s</h1>", AGF_APP_NAME, AGF_VERSION);
     fprintf(out, "<p>Reporte estático de análisis de telemetría de seguridad con estructuras probabilísticas.</p>");
     fprintf(out, "<div class=\"card\"><h2>Resumen</h2><table>");
     fprintf(out, "<tr><th>Métrica</th><th>Valor</th></tr>");
