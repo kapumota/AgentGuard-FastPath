@@ -1,23 +1,58 @@
 # Artefactos de compilación
 build/
 bin/
+obj/
 *.o
 *.a
 *.so
+*.d
+*.gcda
+*.gcno
+*.gcov
 agentguard
+agfast
 
-# Registros
+# Reportes generados por demos locales
+report.json
+report.html
+alerts.csv
+stats.json
+graph.json
+timeline.json
+similarity.json
+agfast-report.json
+agfast-report.html
+agfast-alerts.csv
+agfast-stats.json
+agfast-graph.json
+agfast-timeline.json
+agfast-similarity.json
+reports/
+benchmarks/results/
+
+# Salidas temporales de pruebas y benchmarks
+/tmp/
 *.log
+*.tmp
+vgcore.*
+perf.data
+perf.data.old
 
-# IDE
+# Python local
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# IDE y sistema operativo
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
+.DS_Store
+Thumbs.db
 
 # Binarios de prueba
 tests/test_agent
-
-# Valgrind
-vgcore.*

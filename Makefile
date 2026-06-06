@@ -1,5 +1,5 @@
 # Makefile de AgentGuard-C
-# Software  para investigación en DevSecOps de agentes
+# Software para investigación en DevSecOps de agentes
 
 CC      = gcc
 CFLAGS  = -Wall -Wextra -O2 -g -I./include -D_GNU_SOURCE
@@ -17,8 +17,11 @@ FASTPATH_TARGET = $(BINDIR)/agfast
 FASTPATH_SOURCE = $(SRCDIR)/fastpath.c
 FASTPATH_LDFLAGS = -lm
 BENCH_DIR ?= /tmp/agfast_bench
+ROOT_REPORTS = report.json report.html alerts.csv stats.json graph.json timeline.json similarity.json
+ROOT_REPORTS += agfast-report.json agfast-report.html agfast-alerts.csv
+ROOT_REPORTS += agfast-stats.json agfast-graph.json agfast-timeline.json agfast-similarity.json
 
-.PHONY: all clean install test test-fastpath test-algorithms test-reports benchmark benchmark-csv
+.PHONY: all clean clean-reports install test test-fastpath test-algorithms test-reports benchmark benchmark-csv
 
 all: dirs $(TARGET) $(FASTPATH_TARGET)
 
@@ -41,7 +44,12 @@ $(OBJDIR)/main.o: $(SRCDIR)/main.c $(INCDIR)/agentguard.h
 
 clean:
 	rm -rf $(OBJDIR) $(BINDIR)
-	@echo "Artefactos de compilación eliminados"
+	rm -f $(ROOT_REPORTS)
+	@echo "Artefactos de compilación y reportes locales eliminados"
+
+clean-reports:
+	rm -f $(ROOT_REPORTS)
+	@echo "Reportes locales eliminados"
 
 install: all
 	install -D $(TARGET) /usr/local/bin/agentguard
