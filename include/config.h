@@ -5,7 +5,7 @@
  * Inspirado en:
  *   - Tsinghua OpenClaw: marco de seguridad de 5 capas
  *   - CMU Aegis-4: configuración y validación de sensores
- *   - ETH Zurich: aplicación de políticas en tiempo de ejecución
+ *   - ETH Zurich: aplicación de políticas en tiempo de ejecución.
  */
 
 #ifndef AG_CONFIG_H
