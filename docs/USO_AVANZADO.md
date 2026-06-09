@@ -3,7 +3,7 @@
 
 #### Objetivo
 
-Este documento reúne comandos avanzados reproducibles para AgentGuard FastPath `v1.0.0`.
+Este documento reúne comandos avanzados reproducibles para AgentGuard FastPath `v1.0.1`.
 
 Antes de ejecutar los ejemplos:
 
@@ -22,7 +22,7 @@ make
 La salida esperada debe indicar:
 
 ```text
-AgentGuard FastPath 1.0.0
+AgentGuard FastPath 1.0.1
 AgentGuard-C v1.0.0
 ```
 

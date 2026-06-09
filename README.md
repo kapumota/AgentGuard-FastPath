@@ -3,7 +3,7 @@
 [![AgentGuard-C CI](https://github.com/kapumota/AgentGuard-FastPath/actions/workflows/ci.yml/badge.svg)](https://github.com/kapumota/AgentGuard-FastPath/actions/workflows/ci.yml)
 [![AGFast Quality](https://github.com/kapumota/AgentGuard-FastPath/actions/workflows/agfast-quality.yml/badge.svg)](https://github.com/kapumota/AgentGuard-FastPath/actions/workflows/agfast-quality.yml)
 
-![Release](https://img.shields.io/badge/release-v1.0.0-brightgreen)
+![Release](https://img.shields.io/badge/release-v1.0.1-brightgreen)
 ![Language](https://img.shields.io/badge/language-C-blue)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 ![Tests](https://img.shields.io/badge/tests-regression%20%7C%20streaming%20%7C%20unit-brightgreen)
@@ -370,11 +370,11 @@ make clean
 `make test-valgrind` es recomendable para validación local de memoria. Si Valgrind está instalado, no debe reportar errores de memoria.
 
 <!-- fase10-release:start -->
-### Estado del release v1.0.0
+### Estado del release v1.0.1
 
 #### Resumen
 
-AgentGuard FastPath `v1.0.0` consolida una primera versión presentable como herramienta C defensiva experimental para análisis de telemetría JSONL/CSV.
+AgentGuard FastPath `v1.0.1` consolida una primera versión presentable como herramienta C defensiva experimental para análisis de telemetría JSONL/CSV.
 
 Incluye:
 
@@ -423,7 +423,7 @@ make clean
 La versión presentable actual es:
 
 ```text
-AgentGuard FastPath 1.0.0
+AgentGuard FastPath 1.0.1
 ```
 
 La versión visible del binario debe coincidir con `AGF_VERSION` en `include/common.h`.

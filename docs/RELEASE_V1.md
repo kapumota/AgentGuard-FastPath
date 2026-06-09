@@ -1,4 +1,4 @@
-### Release v1.0.0
+### Release v1.0.1
 
 #### Objetivo
 
@@ -48,7 +48,7 @@ make clean
 
 eBPF queda preparado como soporte opcional.
 
-La versión `v1.0.0` no carga programas eBPF ni implementa GuardSketch en kernel.
+La versión `v1.0.1` no carga programas eBPF ni implementa GuardSketch en kernel.
 
 #### Estado de GuardSketch
 
@@ -89,18 +89,18 @@ Esta versión está orientada a evaluación técnica, portafolio avanzado e inve
 - Validación final ejecutada.
 - `git status --short` limpio.
 - PR de Fase 10 fusionado.
-- Tag `v1.0.0` creado sobre el merge de Fase 10.
-- GitHub Release creado desde el tag `v1.0.0`.
+- Tag `v1.0.1` creado sobre el merge de Fase 10.
+- GitHub Release creado desde el tag `v1.0.1`.
 
 <!-- release-v1-version:start -->
 ### Alineación de versión
 
 #### Binario
 
-El release `v1.0.0` exige que `agfast` reporte:
+El release `v1.0.1` exige que `agfast` reporte:
 
 ```text
-AgentGuard FastPath 1.0.0
+AgentGuard FastPath 1.0.1
 ```
 
 La constante fuente está en:
@@ -112,7 +112,7 @@ include/common.h
 Valor esperado:
 
 ```c
-#define AGF_VERSION "1.0.0"
+#define AGF_VERSION "1.0.1"
 ```
 
 #### Validación
