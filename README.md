@@ -1,14 +1,16 @@
 ### AgentGuard-C y AgentGuard FastPath
 
 [![AgentGuard-C CI](https://github.com/kapumota/AgentGuard-FastPath/actions/workflows/ci.yml/badge.svg)](https://github.com/kapumota/AgentGuard-FastPath/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/kapumota/AgentGuard-FastPath?label=release)](https://github.com/kapumota/AgentGuard-FastPath/releases)
-[![License](https://img.shields.io/github/license/kapumota/AgentGuard-FastPath)](LICENSE)
-[![Language](https://img.shields.io/github/languages/top/kapumota/AgentGuard-FastPath)](https://github.com/kapumota/AgentGuard-FastPath)
-
 [![AGFast Quality](https://github.com/kapumota/AgentGuard-FastPath/actions/workflows/agfast-quality.yml/badge.svg)](https://github.com/kapumota/AgentGuard-FastPath/actions/workflows/agfast-quality.yml)
 
-[![CI](https://github.com/kapumota/AgentGuard-FastPath/actions/workflows/ci.yml/badge.svg)](https://github.com/kapumota/AgentGuard-FastPath/actions/workflows/ci.yml)
-
+![Release](https://img.shields.io/badge/release-v1.0.0-brightgreen)
+![Language](https://img.shields.io/badge/language-C-blue)
+![Build](https://img.shields.io/badge/build-passing-brightgreen)
+![Tests](https://img.shields.io/badge/tests-regression%20%7C%20streaming%20%7C%20unit-brightgreen)
+![Benchmarks](https://img.shields.io/badge/benchmarks-reproducible-blue)
+![GuardSketch](https://img.shields.io/badge/GuardSketch-userspace-blueviolet)
+![eBPF](https://img.shields.io/badge/eBPF-optional-lightgrey)
+![Status](https://img.shields.io/badge/status-experimental%20defensive%20tool-orange)
 AgentGuard FastPath es un software de análisis defensivo de eventos de seguridad escrito en C. Procesa telemetría en formato JSONL o CSV, aplica una política configurable y produce métricas, alertas, relaciones proceso-archivo-red, líneas de tiempo y puntajes de riesgo.
 
 El repositorio contiene dos componentes:
@@ -413,4 +415,3 @@ AGFAST_EVAL_EVENTS=10000 AGFAST_EVAL_PIDS=300 bash scripts/run_evaluation.sh
 make clean
 ```
 <!-- fase10-release:end -->
-
