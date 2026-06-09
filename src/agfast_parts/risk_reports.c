@@ -336,7 +336,7 @@ static void write_html_report(const char *path, const stats_t *stats, const tele
     if (!out) die_errno("no se pudo escribir reporte HTML");
     fprintf(out, "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>AgentGuard FastPath</title>");
     fprintf(out, "<style>body{font-family:system-ui,Arial,sans-serif;margin:32px;line-height:1.45}table{border-collapse:collapse;width:100%%;margin:12px 0}td,th{border:1px solid #ccc;padding:6px;text-align:left}code,pre{background:#f3f3f3;padding:2px 4px}.critical{font-weight:bold}.card{border:1px solid #ddd;border-radius:10px;padding:14px;margin:14px 0}</style></head><body>");
-    fprintf(out, "<h1>AgentGuard FastPath v%s</h1>", AGF_VERSION);
+    fprintf(out, "<h1>%s %s</h1>", AGF_APP_NAME, AGF_VERSION);
     fprintf(out, "<p>Reporte estático de análisis de telemetría de seguridad con estructuras probabilísticas.</p>");
     fprintf(out, "<div class=\"card\"><h2>Resumen</h2><table>");
     fprintf(out, "<tr><th>Métrica</th><th>Valor</th></tr>");
@@ -357,7 +357,7 @@ static void write_html_report(const char *path, const stats_t *stats, const tele
     size_t exact = exact_memory_estimate_bytes(telemetry), prob = telemetry_memory_bytes();
     fprintf(out, "<div class=\"card\"><h2>Memoria exacta estimada vs probabilística</h2><table>");
     fprintf(out, "<tr><th>Tipo</th><th>Bytes</th></tr><tr><td>Exacta estimada</td><td>%zu</td></tr><tr><td>Probabilística fija</td><td>%zu</td></tr><tr><td>Relación</td><td>%.2fx</td></tr></table></div>", exact, prob, prob ? (double)exact / (double)prob : 0.0);
-    fprintf(out, "<div class=\"card\"><h2>Heavy hitters — Space-Saving</h2><p>Top-k con cotas inferior/superior para telemetría de alta escala.</p></div>");
+    fprintf(out, "<div class=\"card\"><h2>Heavy hitters - Space-Saving</h2><p>Top-k con cotas inferior/superior para telemetría de alta escala.</p></div>");
 
     size_t risk_count = 0;
     proc_node_t **risk_nodes = build_sorted_risk_nodes(graph, &risk_count);

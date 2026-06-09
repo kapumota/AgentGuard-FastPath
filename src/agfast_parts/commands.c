@@ -117,7 +117,7 @@ static int process_events(const char *events_path, const char *policy_path, cons
         update_alert_risks(&alerts, &graph);
     }
 
-    printf("\nAgentGuard FastPath v%s - Reporte final\n", AGF_VERSION);
+    printf("\n%s %s - Reporte final\n", AGF_APP_NAME, AGF_VERSION);
     printf("-------------------------------------------------\n");
     printf("Modo: %s\n", policy_loaded ? "analyze con política" : "stats sin política");
     printf("Eventos procesados:        %" PRIu64 "\n", stats.events_processed);
@@ -284,7 +284,7 @@ static int run_graph_command(const char *events_path, const char *policy_path, l
     double elapsed_ms = 0.0;
     load_graph_from_events(events_path, policy_path, &graph, &policy, &events_processed, &malformed_lines, &elapsed_ms);
 
-    printf("\nAgentGuard FastPath v%s - Consulta de grafo\n", AGF_VERSION);
+    printf("\n%s %s - Consulta de grafo\n", AGF_APP_NAME, AGF_VERSION);
     printf("-------------------------------------------------\n");
     printf("Eventos procesados:  %" PRIu64 "\n", events_processed);
     printf("Líneas mal formadas: %" PRIu64 "\n", malformed_lines);
@@ -336,7 +336,7 @@ static int run_timeline_command(const char *events_path, const char *policy_path
     double elapsed_ms = 0.0;
     load_graph_from_events(events_path, policy_path, &graph, &policy, &events_processed, &malformed_lines, &elapsed_ms);
 
-    printf("\nAgentGuard FastPath v%s - Timeline por proceso\n", AGF_VERSION);
+    printf("\n%s %s - Timeline por proceso\n", AGF_APP_NAME, AGF_VERSION);
     printf("-------------------------------------------------\n");
     printf("Eventos procesados:  %" PRIu64 "\n", events_processed);
     printf("Líneas mal formadas: %" PRIu64 "\n", malformed_lines);
@@ -420,7 +420,7 @@ static int run_check_command(check_kind_t kind, const char *value, const char *p
         cuckoo_after_delete = cuckoo_contains(&cf, value);
     }
 
-    printf("\nAgentGuard FastPath v%s - Verificación de política\n", AGF_VERSION);
+    printf("\n%s %s - Verificación de política\n", AGF_APP_NAME, AGF_VERSION);
     printf("-------------------------------------------------\n");
     printf("Tipo:                 %s\n", kind_name);
     printf("Valor:                %s\n", value);
@@ -499,7 +499,7 @@ static int run_similarity_command(const char *events_path, const char *policy_pa
     double parity_sim = odd_sketch_parity_similarity(&ska, &skb);
     double exact_j = exact_jaccard_node_relations(a, b);
     size_t hamming = odd_sketch_hamming(&ska, &skb);
-    printf("\nAgentGuard FastPath v%s - Similitud de comportamiento\n", AGF_VERSION);
+    printf("\n%s %s - Similitud de comportamiento\n", AGF_APP_NAME, AGF_VERSION);
     printf("-------------------------------------------------\n");
 
     printf("Proceso A: %s[%ld] relaciones=%zu\n", a->process, a->pid, a->files.count + a->destinations.count);
@@ -532,7 +532,7 @@ static int run_tail_command(const char *events_path, const char *policy_path, bo
     policy_load(&policy, policy_path);
     FILE *fp = fopen(events_path, "r");
     if (!fp) die_errno("no se pudo abrir archivo de eventos para tail");
-    printf("AgentGuard FastPath v%s - tail incremental%s\n", AGF_VERSION, follow ? " (--follow)" : "");
+    printf("%s %s - tail incremental%s\n", AGF_APP_NAME, AGF_VERSION, follow ? " (--follow)" : "");
     printf("-------------------------------------------------\n");
     char *line = NULL;
     size_t line_cap = 0;

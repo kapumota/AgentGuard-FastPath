@@ -15,6 +15,7 @@ OBJECTS = $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SOURCES))
 TARGET  = $(BINDIR)/agentguard
 FASTPATH_TARGET = $(BINDIR)/agfast
 FASTPATH_SOURCE = $(SRCDIR)/fastpath.c
+FASTPATH_MODULES = $(SRCDIR)/common.c $(SRCDIR)/string_list.c
 FASTPATH_LDFLAGS = -lm
 BENCH_DIR ?= /tmp/agfast_bench
 ROOT_REPORTS = report.json report.html alerts.csv stats.json graph.json timeline.json similarity.json
@@ -32,8 +33,8 @@ $(TARGET): $(OBJECTS)
 	$(CC) $(OBJECTS) -o $@ $(LDFLAGS)
 	@echo "Compilado: $@"
 
-$(FASTPATH_TARGET): $(FASTPATH_SOURCE)
-	$(CC) $(CFLAGS) $< -o $@ $(FASTPATH_LDFLAGS)
+$(FASTPATH_TARGET): $(FASTPATH_SOURCE) $(FASTPATH_MODULES)
+	$(CC) $(CFLAGS) $(FASTPATH_SOURCE) $(FASTPATH_MODULES) -o $@ $(FASTPATH_LDFLAGS)
 	@echo "Compilado: $@"
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c $(INCDIR)/%.h

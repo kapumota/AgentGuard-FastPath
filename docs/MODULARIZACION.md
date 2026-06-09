@@ -120,3 +120,24 @@ report_html.h y report_html.c
 commands.h y commands.c
 main_agfast.c
 ```
+
+
+### Cierre de Fase 2
+
+#### Decisión
+
+La Fase 2 se cierra como modularización mínima segura.
+
+No se extraen todavía todos los módulos reales porque el objetivo inmediato es preservar comportamiento, compilar correctamente y preparar el proyecto para pruebas de regresión.
+
+#### Resultado
+
+`src/fastpath.c` queda como punto de ensamblaje.
+
+`src/agfast_parts/` queda organizado por responsabilidades.
+
+La versión visible deja de presentarse como final y pasa a identificarse como `0.2.0-dev`.
+
+#### Próximo paso
+
+La modularización profunda se retoma después de fortalecer pruebas, benchmarks y validación de comportamiento.
