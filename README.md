@@ -362,3 +362,50 @@ make clean
 ```
 
 `make test-valgrind` es recomendable para validación local de memoria. Si Valgrind está instalado, no debe reportar errores de memoria.
+
+<!-- fase10-release:start -->
+### Estado del release v1.0.0
+
+#### Resumen
+
+AgentGuard FastPath `v1.0.0` consolida una primera versión presentable como herramienta C defensiva experimental para análisis de telemetría JSONL/CSV.
+
+Incluye:
+
+- pruebas de regresión;
+- pruebas de streaming;
+- tests unitarios en C con Unity;
+- benchmarks;
+- evaluación experimental reproducible;
+- GuardSketch MVP en userspace;
+- preparación eBPF opcional;
+- CI/CD visible;
+- documentación técnica de release.
+
+#### Documentación principal
+
+- `docs/INSTALACION.md`
+- `docs/USO_AVANZADO.md`
+- `docs/RELEASE_V1.md`
+- `docs/EVALUACION.md`
+- `docs/GUARDSKETCH.md`
+- `docs/EBPF.md`
+- `docs/CI.md`
+- `CHANGELOG.md`
+
+#### Validación recomendada
+
+```bash
+make clean
+make
+make test-fastpath
+make test-regression
+make test-streaming
+make test-guardsketch
+make test-unit
+bash benchmarks/run_benchmark.sh
+AGFAST_EVAL_EVENTS=10000 AGFAST_EVAL_PIDS=300 bash scripts/run_evaluation.sh
+make clean
+```
+<!-- fase10-release:end -->
+
