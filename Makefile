@@ -161,3 +161,13 @@ test-fastpath: test test-algorithms test-reports
 .PHONY: test-streaming
 test-streaming: all
 	bash tests/test_streaming.sh
+
+.PHONY: ebpf-check
+ebpf-check:
+	@bash ebpf/check_ebpf_env.sh
+
+.PHONY: ebpf-info
+ebpf-info:
+	@echo "Soporte eBPF opcional"
+	@echo "La compilacion normal de agfast no requiere eBPF"
+	@echo "Ejecuta: make ebpf-check"
