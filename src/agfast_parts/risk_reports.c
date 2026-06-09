@@ -357,7 +357,7 @@ static void write_html_report(const char *path, const stats_t *stats, const tele
     size_t exact = exact_memory_estimate_bytes(telemetry), prob = telemetry_memory_bytes();
     fprintf(out, "<div class=\"card\"><h2>Memoria exacta estimada vs probabilística</h2><table>");
     fprintf(out, "<tr><th>Tipo</th><th>Bytes</th></tr><tr><td>Exacta estimada</td><td>%zu</td></tr><tr><td>Probabilística fija</td><td>%zu</td></tr><tr><td>Relación</td><td>%.2fx</td></tr></table></div>", exact, prob, prob ? (double)exact / (double)prob : 0.0);
-    fprintf(out, "<div class=\"card\"><h2>Heavy hitters — Space-Saving</h2><p>Top-k con cotas inferior/superior para telemetría de alta escala.</p></div>");
+    fprintf(out, "<div class=\"card\"><h2>Heavy hitters - Space-Saving</h2><p>Top-k con cotas inferior/superior para telemetría de alta escala.</p></div>");
 
     size_t risk_count = 0;
     proc_node_t **risk_nodes = build_sorted_risk_nodes(graph, &risk_count);

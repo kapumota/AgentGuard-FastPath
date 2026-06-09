@@ -35,7 +35,7 @@ src/agfast_parts/main_cli.c
 
 #### Cambio de versión visible
 
-Se elimina el texto engañoso `AgentGuard FastPath v1.1.0-final`.
+Se elimina el texto engañoso `AgentGuard FastPath 0.2.0-dev`.
 
 La aplicación pasa a usar:
 
