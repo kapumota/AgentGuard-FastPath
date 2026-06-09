@@ -67,3 +67,74 @@ Su alcance es:
 - limpieza;
 - reproducibilidad;
 - preparacion para fases posteriores.
+
+<!-- fase6:start -->
+### Decisiones técnicas de Fase 6
+
+#### Decisión 1 - Mantener userspace como ruta principal
+
+La ruta principal del proyecto sigue siendo userspace.
+
+Motivo:
+
+- es reproducible;
+- no requiere privilegios;
+- facilita pruebas;
+- facilita benchmarks;
+- permite validar el modelo antes de integrar captura de kernel.
+
+#### Decisión 2 - No introducir eBPF todavía
+
+eBPF se pospone hasta que el proyecto tenga documentación técnica y criterios claros.
+
+Motivo:
+
+- eBPF puede romper la portabilidad;
+- eBPF requiere dependencias específicas;
+- eBPF no debe agregarse antes de validar el valor del análisis.
+
+#### Decisión 3 - Evaluar sketches por impacto en riesgo
+
+Los sketches no deben evaluarse solo por error matemático aislado.
+
+El criterio principal es si preservan decisiones defensivas.
+
+Métricas relevantes:
+
+- top-k overlap;
+- cambios de nivel de riesgo;
+- ranking de PIDs;
+- falsos positivos esperados;
+- error de cardinalidad.
+
+#### Decisión 4 - No vender el proyecto como EDR completo
+
+El proyecto se debe describir como analizador defensivo avanzado de telemetría.
+
+No debe presentarse como EDR completo ni SIEM completo.
+
+#### Decisión 5 - Mantener fases pequeñas
+
+Cada fase debe ser verificable con cambios acotados.
+
+La Fase 6 solo modifica documentación técnica.
+
+No debe tocar código fuente, benchmarks ni pruebas.
+
+#### Decisión 6 - Documentar limitaciones antes de agregar complejidad
+
+Antes de eBPF o GuardSketch en kernel, el proyecto debe explicar sus límites.
+
+Esto mejora la revisión técnica y evita promesas excesivas.
+
+#### Decisión 7 - Mantener formato documental uniforme
+
+La documentación usa:
+
+- títulos con `###`;
+- subtítulos con `####`;
+- guiones simples;
+- sin separadores con signos iguales;
+- texto en español;
+- comandos reproducibles.
+<!-- fase6:end -->
