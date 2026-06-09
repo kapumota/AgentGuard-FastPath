@@ -103,3 +103,48 @@ Esta fase no modifica pruebas existentes.
 Esta fase no agrega dependencias runtime al proyecto.
 
 Esta fase solo agrega automatización de calidad.
+
+### Workflows separados
+
+#### AGFast Quality
+
+El workflow principal de calidad es:
+
+```text
+.github/workflows/agfast-quality.yml
+```
+
+Este workflow se ejecuta en:
+
+- push a `main`;
+- pull request hacia `main`;
+- ejecución manual.
+
+No se ejecuta por push directo a ramas `fase-*` para evitar duplicados cuando ya existe un pull request abierto.
+
+#### Valgrind
+
+Valgrind se mueve a un workflow separado:
+
+```text
+.github/workflows/valgrind.yml
+```
+
+Este workflow se ejecuta en:
+
+- ejecución manual;
+- ejecución programada semanal.
+
+No se ejecuta en cada pull request porque puede ser más lento que las pruebas principales.
+
+#### Motivo del cambio
+
+Separar Valgrind evita que GitHub muestre jobs omitidos en cada pull request.
+
+También mantiene el PR más limpio visualmente y conserva una validación de memoria disponible para revisión profunda.
+
+#### Resultado esperado
+
+En un pull request normal deben aparecer checks exitosos del flujo principal.
+
+El workflow de Valgrind queda disponible desde la pestaña Actions para ejecución manual.
