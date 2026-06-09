@@ -16,7 +16,7 @@
 #include <unistd.h>
 
 #define AGF_APP_NAME "AgentGuard FastPath"
-#define AGF_VERSION "0.2.0-dev"
+#define AGF_VERSION "1.0.0"
 #define AGF_MAX_STR 512
 #define AGF_BLOOM_BITS (1u << 20)
 #define AGF_BLOOM_HASHES 7u

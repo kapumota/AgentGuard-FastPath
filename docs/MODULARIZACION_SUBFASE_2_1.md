@@ -35,15 +35,15 @@ src/agfast_parts/main_cli.c
 
 #### Cambio de versión visible
 
-Se elimina el texto engañoso `AgentGuard FastPath 0.2.0-dev`.
+Durante la Fase 2 se reemplazó una cadena final antigua por una versión de desarrollo temporal.
 
-La aplicación pasa a usar:
+La aplicación usó en esa etapa:
 
 ```text
 AgentGuard FastPath 0.2.0-dev
 ```
 
-Esto indica que la rama corresponde a una fase de modularización en desarrollo, no a una versión final.
+Ese valor correspondía a modularización en desarrollo. En el release `v1.0.0`, la versión visible se alinea con `AGF_VERSION = "1.0.0"`.
 
 #### Criterio técnico
 
@@ -73,3 +73,27 @@ src/parser.c
 ```
 
 Ese cambio debe hacerse en otra subfase para mantener commits pequeños y auditables.
+
+<!-- release-v1-modularizacion:start -->
+### Nota histórica sobre versión
+
+#### Contexto
+
+Durante la Fase 2, `agfast` se identificó temporalmente como:
+
+```text
+AgentGuard FastPath 0.2.0-dev
+```
+
+Ese valor fue correcto para la etapa de modularización mínima segura.
+
+#### Release actual
+
+En el release `v1.0.0`, la versión visible debe coincidir con:
+
+```c
+#define AGF_VERSION "1.0.0"
+```
+
+Esto alinea consola, reportes JSON, reportes HTML y documentación de release.
+<!-- release-v1-modularizacion:end -->

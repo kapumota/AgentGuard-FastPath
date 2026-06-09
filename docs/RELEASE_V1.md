@@ -91,3 +91,37 @@ Esta versión está orientada a evaluación técnica, portafolio avanzado e inve
 - PR de Fase 10 fusionado.
 - Tag `v1.0.0` creado sobre el merge de Fase 10.
 - GitHub Release creado desde el tag `v1.0.0`.
+
+<!-- release-v1-version:start -->
+### Alineación de versión
+
+#### Binario
+
+El release `v1.0.0` exige que `agfast` reporte:
+
+```text
+AgentGuard FastPath 1.0.0
+```
+
+La constante fuente está en:
+
+```text
+include/common.h
+```
+
+Valor esperado:
+
+```c
+#define AGF_VERSION "1.0.0"
+```
+
+#### Validación
+
+```bash
+make clean
+make
+./bin/agfast --version
+./bin/agentguard --version
+make clean
+```
+<!-- release-v1-version:end -->

@@ -1,4 +1,30 @@
+
 ### Uso avanzado
+
+#### Objetivo
+
+Este documento reúne comandos avanzados reproducibles para AgentGuard FastPath `v1.0.0`.
+
+Antes de ejecutar los ejemplos:
+
+```bash
+make clean
+make
+```
+
+#### Versión
+
+```bash
+./bin/agfast --version
+./bin/agentguard --version
+```
+
+La salida esperada debe indicar:
+
+```text
+AgentGuard FastPath 1.0.0
+AgentGuard-C v1.0.0
+```
 
 #### Análisis con política
 
@@ -9,20 +35,13 @@
 #### Reporte JSON
 
 ```bash
-./bin/agfast analyze examples/events.jsonl \
-  --policy examples/policy.json \
-  --risk \
-  --report agfast-report.json
+./bin/agfast analyze examples/events.jsonl   --policy examples/policy.json   --risk   --report agfast-report.json
 ```
 
 #### Reporte HTML y CSV de alertas
 
 ```bash
-./bin/agfast analyze examples/events.jsonl \
-  --policy examples/policy.json \
-  --risk \
-  --html agfast-report.html \
-  --alerts-csv agfast-alerts.csv
+./bin/agfast analyze examples/events.jsonl   --policy examples/policy.json   --risk   --html agfast-report.html   --alerts-csv agfast-alerts.csv
 ```
 
 #### Estadísticas
@@ -37,16 +56,26 @@
 ./bin/agfast timeline examples/events.jsonl
 ```
 
-#### Grafo por PID
+#### Grafo por PID reproducible
+
+Para buscar un PID existente:
 
 ```bash
-./bin/agfast graph examples/events.jsonl --pid 501
+grep -o '"pid":[0-9]*' examples/events_day3.jsonl | head
 ```
+
+Ejemplo de grafo:
+
+```bash
+./bin/agfast graph examples/events_day3.jsonl   --policy examples/policy.json   --pid 123   --timeline   --report agfast-graph.json
+```
+
+Si el PID `123` no existe en el fixture local, reemplazarlo por uno listado por el comando `grep`.
 
 #### Grafo por proceso
 
 ```bash
-./bin/agfast graph examples/events.jsonl --process python
+./bin/agfast graph examples/events_day3.jsonl   --policy examples/policy.json   --process python   --timeline   --report agfast-graph-process.json
 ```
 
 #### Consultas rápidas
@@ -57,10 +86,12 @@
 ./bin/agfast check-domain malicious.example --policy examples/policy.json
 ```
 
-#### Similaridad
+#### Similaridad entre procesos
+
+El comando `similarity` requiere proceso base y proceso de comparación.
 
 ```bash
-./bin/agfast similarity examples/events.jsonl
+./bin/agfast similarity examples/events_day3.jsonl   --process python   --compare-process bash   --policy examples/policy.json   --report agfast-similarity.json
 ```
 
 #### Generación de dataset
@@ -75,10 +106,10 @@
 ./bin/agfast tail examples/events.jsonl --policy examples/policy.json
 ```
 
-#### Modo tail con follow
+#### Benchmarks
 
 ```bash
-./bin/agfast tail /tmp/agfast-stream.jsonl --policy examples/policy.json --follow
+bash benchmarks/run_benchmark.sh
 ```
 
 #### Evaluación reproducible
@@ -99,22 +130,8 @@ make test-guardsketch
 make test-unit
 ```
 
-#### CI/CD
+#### Limpieza
 
-El workflow principal de calidad es:
-
-```text
-.github/workflows/agfast-quality.yml
+```bash
+make clean
 ```
-
-El workflow de Valgrind es:
-
-```text
-.github/workflows/valgrind.yml
-```
-
-#### Interpretación de códigos de salida
-
-Durante la evaluación experimental, el código `2` puede indicar alertas detectadas.
-
-En ese contexto, el script de evaluación acepta el código `2` como hallazgo esperado si los reportes fueron generados correctamente.

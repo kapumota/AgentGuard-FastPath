@@ -73,3 +73,27 @@ Fase 3 - Pruebas de regresión y calidad automática
 ```
 
 Antes de seguir separando módulos internos, el proyecto debe contar con pruebas suficientes para proteger el comportamiento actual.
+
+<!-- release-v1-modularizacion:start -->
+### Nota histórica sobre versión
+
+#### Contexto
+
+Durante la Fase 2, `agfast` se identificó temporalmente como:
+
+```text
+AgentGuard FastPath 0.2.0-dev
+```
+
+Ese valor fue correcto para la etapa de modularización mínima segura.
+
+#### Release actual
+
+En el release `v1.0.0`, la versión visible debe coincidir con:
+
+```c
+#define AGF_VERSION "1.0.0"
+```
+
+Esto alinea consola, reportes JSON, reportes HTML y documentación de release.
+<!-- release-v1-modularizacion:end -->

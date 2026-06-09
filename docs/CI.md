@@ -1,30 +1,47 @@
+
 ### CI/CD visible
 
 #### Objetivo
 
-La Fase 9.2 agrega validación automática con GitHub Actions.
+La validación automática del proyecto se divide en tres workflows.
 
-El objetivo es que cada push y cada pull request ejecuten compilación, pruebas y evaluación mínima antes de fusionar cambios a `main`.
+Esto evita mezclar seguridad, calidad del release y validación profunda de memoria en un solo flujo.
 
-#### Archivo principal
+#### Workflow base
+
+Archivo:
 
 ```text
 .github/workflows/ci.yml
 ```
 
-#### Eventos del workflow
+Propósito:
 
-El workflow se ejecuta en:
+- compilación base;
+- prueba rápida `make test-fastpath`;
+- benchmark básico si está disponible;
+- validación de memoria básica si está configurada;
+- CodeQL;
+- Semgrep.
 
-- push a `main`;
-- push a ramas `fase-*`;
-- pull request hacia `main`;
-- ejecución manual con `workflow_dispatch`;
-- ejecución programada semanal.
+#### Workflow principal de calidad del release
 
-#### Job principal
+Archivo:
 
-El job principal ejecuta:
+```text
+.github/workflows/agfast-quality.yml
+```
+
+Propósito:
+
+- compilar `agfast`;
+- ejecutar pruebas de regresión;
+- ejecutar pruebas de streaming;
+- ejecutar pruebas de GuardSketch;
+- ejecutar tests unitarios en C con Unity;
+- ejecutar evaluación experimental reducida.
+
+Comandos principales:
 
 ```bash
 make clean
@@ -38,113 +55,31 @@ bash scripts/run_evaluation.sh
 make clean
 ```
 
-#### Evaluación en CI
+#### Workflow de Valgrind
 
-La evaluación experimental usa un dataset reducido para evitar tiempos excesivos en GitHub Actions.
-
-Variables usadas:
-
-```text
-AGFAST_EVAL_EVENTS=10000
-AGFAST_EVAL_PIDS=300
-AGFAST_EVAL_DIR=/tmp/agfast_ci_evaluacion
-```
-
-Esto mantiene el flujo reproducible sin generar archivos pesados dentro del repositorio.
-
-#### Job opcional de Valgrind
-
-Valgrind se ejecuta en un job separado.
-
-Ese job corre solo en:
-
-- ejecución manual;
-- ejecución programada semanal.
-
-Motivo:
-
-- Valgrind puede ser más lento;
-- no debe bloquear cada push pequeño;
-- sigue disponible para validación profunda.
-
-Comando ejecutado:
-
-```bash
-make test-valgrind
-```
-
-#### Badge en README
-
-El README incluye un badge de estado:
-
-```text
-CI
-```
-
-Ese badge permite verificar rápidamente si el proyecto compila y pasa pruebas.
-
-#### Criterio de aceptación
-
-La Fase 9.2 se considera correcta si:
-
-- GitHub Actions aparece en la pestaña Actions;
-- el workflow `CI` se ejecuta en PR;
-- el job principal pasa;
-- el badge aparece en README;
-- Valgrind queda disponible como validación manual o programada;
-- la ruta normal del proyecto no cambia.
-
-#### Alcance
-
-Esta fase no modifica código fuente.
-
-Esta fase no modifica pruebas existentes.
-
-Esta fase no agrega dependencias runtime al proyecto.
-
-Esta fase solo agrega automatización de calidad.
-
-### Workflows separados
-
-#### AGFast Quality
-
-El workflow principal de calidad es:
-
-```text
-.github/workflows/agfast-quality.yml
-```
-
-Este workflow se ejecuta en:
-
-- push a `main`;
-- pull request hacia `main`;
-- ejecución manual.
-
-No se ejecuta por push directo a ramas `fase-*` para evitar duplicados cuando ya existe un pull request abierto.
-
-#### Valgrind
-
-Valgrind se mueve a un workflow separado:
+Archivo:
 
 ```text
 .github/workflows/valgrind.yml
 ```
 
-Este workflow se ejecuta en:
+Propósito:
 
-- ejecución manual;
-- ejecución programada semanal.
+- ejecutar validación de memoria de forma manual o programada;
+- evitar jobs omitidos en cada pull request;
+- mantener una ruta de revisión profunda cuando se necesite.
 
-No se ejecuta en cada pull request porque puede ser más lento que las pruebas principales.
+Eventos:
 
-#### Motivo del cambio
+- `workflow_dispatch`;
+- `schedule` semanal.
 
-Separar Valgrind evita que GitHub muestre jobs omitidos en cada pull request.
+#### Criterio de aceptación
 
-También mantiene el PR más limpio visualmente y conserva una validación de memoria disponible para revisión profunda.
+Para aceptar un cambio previo al release:
 
-#### Resultado esperado
-
-En un pull request normal deben aparecer checks exitosos del flujo principal.
-
-El workflow de Valgrind queda disponible desde la pestaña Actions para ejecución manual.
+- CI base debe pasar;
+- AGFast Quality debe pasar;
+- no debe haber cambios sin commit;
+- la evaluación experimental reducida debe generar resumen;
+- Valgrind debe quedar disponible para ejecución manual o semanal.

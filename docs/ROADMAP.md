@@ -116,3 +116,46 @@ fase-2-modularizacion-agfast
 fase-3-pruebas-regresion
 fase-4-benchmark-memoria
 ```
+
+<!-- release-v1-roadmap:start -->
+### Estado actualizado del roadmap
+
+#### Fase 9.1 - Tests unitarios en C con Unity
+
+Estado: completado.
+
+Se agregaron tests unitarios autocontenidos para invariantes de estructuras probabilísticas, grafo y helpers de riesgo.
+
+#### Fase 9.2 - CI/CD visible
+
+Estado: completado.
+
+Se agregaron workflows de calidad, documentación de CI y separación de Valgrind como validación manual o semanal.
+
+#### Fase 10 - Release v1.0.0
+
+Estado: completado.
+
+Incluye:
+
+- `CHANGELOG.md`;
+- `docs/RELEASE_V1.md`;
+- `docs/INSTALACION.md`;
+- `docs/USO_AVANZADO.md`;
+- `docs/HISTORIAL_FASES.md`;
+- badges funcionales;
+- validación final;
+- tag y release de GitHub.
+
+#### eBPF
+
+Estado actual: preparación opcional.
+
+El proyecto todavía no implementa captura eBPF real en `v1.0.0`.
+
+#### GuardSketch
+
+Estado actual: MVP userspace.
+
+GuardSketch todavía no se ejecuta en kernel.
+<!-- release-v1-roadmap:end -->
