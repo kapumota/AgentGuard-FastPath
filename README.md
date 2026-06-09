@@ -294,7 +294,6 @@ Después de fusionar la Fase 1 en `main`:
 ```bash
 git checkout main
 git pull origin main
-git tag -a v0.1.1 -m "v0.1.1: higiene inicial del repositorio"
 git push origin main --tags
 ```
 
@@ -415,3 +414,38 @@ AGFAST_EVAL_EVENTS=10000 AGFAST_EVAL_PIDS=300 bash scripts/run_evaluation.sh
 make clean
 ```
 <!-- fase10-release:end -->
+
+<!-- release-v1-consistency:start -->
+### Release actual
+
+#### Versión
+
+La versión presentable actual es:
+
+```text
+AgentGuard FastPath 1.0.0
+```
+
+La versión visible del binario debe coincidir con `AGF_VERSION` en `include/common.h`.
+
+Validación rápida:
+
+```bash
+make clean
+make
+./bin/agfast --version
+./bin/agentguard --version
+make clean
+```
+
+#### Documentación relacionada
+
+- `CHANGELOG.md`
+- `docs/RELEASE_V1.md`
+- `docs/INSTALACION.md`
+- `docs/USO_AVANZADO.md`
+- `docs/HISTORIAL_FASES.md`
+- `docs/CI.md`
+- `SECURITY.md`
+- `CONTRIBUTING.md`
+<!-- release-v1-consistency:end -->
