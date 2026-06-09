@@ -175,3 +175,13 @@ ebpf-info:
 .PHONY: test-guardsketch
 test-guardsketch:
 	bash tests/test_guardsketch.sh
+
+.PHONY: test-unit
+test-unit:
+	mkdir -p obj/unit
+	$(CC) $(CFLAGS) -Ithird_party/unity tests/unit/test_probabilistic.c third_party/unity/unity.c -lm -o obj/unit/test_probabilistic
+	$(CC) $(CFLAGS) -Ithird_party/unity tests/unit/test_graph_model.c third_party/unity/unity.c -o obj/unit/test_graph_model
+	$(CC) $(CFLAGS) -Ithird_party/unity tests/unit/test_risk_helpers.c third_party/unity/unity.c -o obj/unit/test_risk_helpers
+	./obj/unit/test_probabilistic
+	./obj/unit/test_graph_model
+	./obj/unit/test_risk_helpers
