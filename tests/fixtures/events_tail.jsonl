@@ -1,0 +1,2 @@
+{"time":"2026-06-08T12:00:01Z","pid":700,"process":"python","event":"open","file":"/etc/passwd"}
+{"time":"2026-06-08T12:00:02Z","pid":700,"process":"python","event":"connect","dst":"45.90.10.2","ip":"45.90.10.2"}

@@ -292,3 +292,69 @@ Luego se puede crear un GitHub Release asociado al tag `v0.1.1`.
 #### Licencia
 
 Este proyecto se distribuye bajo la licencia indicada en `LICENSE`.
+
+### Pruebas de regresión y Valgrind
+
+#### Pruebas de regresión
+
+La Fase 3 agrega una suite de regresión para validar comandos principales de `agfast` con fixtures pequeños y reproducibles.
+
+Ejecución recomendada:
+
+```bash
+make clean
+make
+make test-fastpath
+make test-regression
+make clean
+```
+
+Salida esperada al final de `make test-regression`:
+
+```text
+Pruebas de regresion superadas
+```
+
+#### Instalación de Valgrind
+
+En Ubuntu o Debian:
+
+```bash
+sudo apt update
+sudo apt install -y valgrind
+```
+
+#### Ejecución con Valgrind
+
+```bash
+make test-valgrind
+```
+
+Si Valgrind está instalado, la salida debe incluir una revisión de memoria de `agfast`.
+
+Salida esperada en una ejecución correcta:
+
+```text
+Prueba Valgrind de agfast
+ERROR SUMMARY: 0 errors
+```
+
+Si Valgrind no está instalado, la prueba no detiene el flujo de trabajo y muestra:
+
+```text
+Valgrind no esta instalado; prueba omitida
+```
+
+#### Criterio de aceptación
+
+Para esta fase, el proyecto debe pasar:
+
+```bash
+make clean
+make
+make test-fastpath
+make test-regression
+make clean
+```
+
+`make test-valgrind` es recomendable para validación local de memoria. Si Valgrind está instalado, no debe reportar errores de memoria.
