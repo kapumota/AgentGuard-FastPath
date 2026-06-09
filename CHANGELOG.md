@@ -58,14 +58,14 @@ Esta versión consolida AgentGuard FastPath como una herramienta defensiva exper
 - `v0.9.0`: evaluación experimental reproducible.
 - `v0.9.1`: tests unitarios en C con Unity.
 - `v0.9.2`: CI de pruebas y calidad.
-- `v1.0.0`: primera versión presentable.
+- `v1.0.1`: primera versión presentable.
 
 <!-- release-v1-consistency-changelog:start -->
 ### Corrección de consistencia de release
 
 #### v1.0.0
 
-Se alinea la versión visible de `agfast` con el release `v1.0.0`.
+Se alinea la versión visible de `agfast` con el release `v1.0.1`.
 
 Cambios:
 
@@ -76,3 +76,20 @@ Cambios:
 - roadmap incorpora Fase 9.1, Fase 9.2 y Fase 10;
 - documentos de modularización quedan como historial.
 <!-- release-v1-consistency-changelog:end -->
+
+### v1.0.1 - Corrección de consistencia post-release
+
+#### Correcciones
+
+- Se alinea la versión visible de `agfast` con el patch release `v1.0.1`.
+- Se conserva `v1.0.0` como primer release histórico publicado.
+- Se corrige documentación de release.
+- Se corrige documentación de CI.
+- Se corrigen ejemplos de uso avanzado.
+- Se actualiza roadmap con Fase 9.1, Fase 9.2 y Fase 10.
+- Se agregan documentos de seguridad y contribución.
+- Se agrega `docs/HISTORIAL_FASES.md`.
+
+#### Motivo
+
+El release `v1.0.0` ya estaba publicado, pero `agfast --version` todavía mostraba una versión de desarrollo o una versión anterior. Esta versión corrige esa inconsistencia.
