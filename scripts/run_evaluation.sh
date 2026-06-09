@@ -250,19 +250,57 @@ run_timed() {
   local label="$1"
   shift
   local out_file="$EVAL_DIR/time_${label}.txt"
+  local status_file="$EVAL_DIR/status_${label}.txt"
+  local status=0
+
+  set +e
   /usr/bin/time -f "%e %M" -o "$out_file" "$@"
+  status=$?
+  set -e
+
+  echo "$status" > "$status_file"
+  return "$status"
+}
+
+accept_status() {
+  local label="$1"
+  local status="$2"
+  shift 2
+
+  for allowed in "$@"; do
+    if [ "$status" -eq "$allowed" ]; then
+      echo "$label retorno codigo $status aceptado para esta evaluacion"
+      return 0
+    fi
+  done
+
+  echo "$label retorno codigo $status no esperado" >&2
+  return "$status"
 }
 
 echo "Ejecutando agfast sobre dataset de evaluacion"
-run_timed agfast ./bin/agfast analyze "$EVENTS_FILE" \
+if run_timed agfast ./bin/agfast analyze "$EVENTS_FILE" \
   --policy "$POLICY_FILE" \
   --risk \
   --report "$REPORT_JSON" \
   --html "$REPORT_HTML" \
-  --alerts-csv "$ALERTS_CSV"
+  --alerts-csv "$ALERTS_CSV"; then
+  echo "agfast finalizo sin codigo de alerta"
+else
+  status=$?
+  # En evaluacion, codigo 2 se acepta como hallazgo de alertas/riesgo.
+  # No representa fallo del binario si los reportes fueron generados.
+  accept_status "agfast analyze" "$status" 2
+fi
 
 echo "Evaluando robustez con entradas corruptas usando tail"
-run_timed corrupt_tail ./bin/agfast tail "$CORRUPT_FILE" --policy "$POLICY_FILE" > "$TAIL_OUT"
+if run_timed corrupt_tail ./bin/agfast tail "$CORRUPT_FILE" --policy "$POLICY_FILE" > "$TAIL_OUT"; then
+  echo "tail con entradas corruptas finalizo sin codigo de alerta"
+else
+  status=$?
+  # Se acepta codigo 2 si tail detecta alertas durante la evaluacion.
+  accept_status "agfast tail" "$status" 2
+fi
 
 echo "Ejecutando simulacion de ranking de sketches"
 python3 experiments/sketch_rank_simulation.py > "$SKETCH_SIM_OUT"
@@ -332,10 +370,30 @@ def read_time(label):
     p = out_dir / ("time_%s.txt" % label)
     if not p.exists():
         return {"seconds": None, "max_rss_kb": None}
-    raw = p.read_text(encoding="utf-8").strip().split()
-    if len(raw) >= 2:
-        return {"seconds": float(raw[0]), "max_rss_kb": int(raw[1])}
+
+    # /usr/bin/time puede agregar una linea como:
+    # Command exited with non-zero status 2
+    # Por eso se busca la ultima linea con dos valores numericos.
+    lines = p.read_text(encoding="utf-8", errors="ignore").splitlines()
+    for line in reversed(lines):
+        raw = line.strip().split()
+        if len(raw) >= 2:
+            try:
+                return {
+                    "seconds": float(raw[0]),
+                    "max_rss_kb": int(float(raw[1])),
+                }
+            except ValueError:
+                continue
+
     return {"seconds": None, "max_rss_kb": None}
+
+def read_status(label):
+    p = out_dir / ("status_%s.txt" % label)
+    if not p.exists():
+        return None
+    raw = p.read_text(encoding="utf-8").strip()
+    return int(raw) if raw.isdigit() else None
 
 report_size = report_path.stat().st_size if report_path.exists() else 0
 alerts_size = alerts_path.stat().st_size if alerts_path.exists() else 0
@@ -344,7 +402,9 @@ robust_tail = "Eventos procesados en tail" in tail_text
 
 summary = {
     "agfast": read_time("agfast"),
+    "agfast_exit_code": read_status("agfast"),
     "corrupt_tail": read_time("corrupt_tail"),
+    "corrupt_tail_exit_code": read_status("corrupt_tail"),
     "precision_alerts_vs_labels": precision,
     "recall_alerts_vs_labels": recall,
     "true_positives": tp,
@@ -381,6 +441,13 @@ md.append("| tail con entradas corruptas | {seconds} | {rss} |".format(
     rss=summary["corrupt_tail"]["max_rss_kb"],
 ))
 md.append("")
+md.append("#### Códigos de salida")
+md.append("")
+md.append("| Componente | Código | Interpretación |")
+md.append("|---|---:|---|")
+md.append("| agfast analyze | %s | 0 normal, 2 alertas detectadas aceptadas en evaluación |" % summary.get("agfast_exit_code"))
+md.append("| tail con entradas corruptas | %s | 0 normal, 2 alertas detectadas aceptadas en evaluación |" % summary.get("corrupt_tail_exit_code"))
+md.append("")
 md.append("#### Calidad de detección")
 md.append("")
 md.append("| Métrica | Valor |")
@@ -397,14 +464,14 @@ md.append("#### Tamaño de reportes")
 md.append("")
 md.append("| Archivo | Bytes |")
 md.append("|---|---:|")
-md.append("| reporte JSON | %d |" % report_size)
-md.append("| alertas CSV | %d |" % alerts_size)
+md.append("| reporte JSON | %d |" % summary["report_size_bytes"])
+md.append("| alertas CSV | %d |" % summary["alerts_size_bytes"])
 md.append("")
 md.append("#### Robustez")
 md.append("")
 md.append("| Prueba | Resultado |")
 md.append("|---|---|")
-md.append("| tail con líneas corruptas | %s |" % ("ok" if robust_tail else "fallo"))
+md.append("| tail con líneas corruptas | %s |" % ("ok" if summary["robust_tail_with_corrupt_lines"] else "fallo"))
 md.append("| GuardSketch userspace | %s |" % guardsketch_status)
 md.append("")
 md.append("#### Archivos generados")
