@@ -1,0 +1,81 @@
+name: AGFast Quality
+
+on:
+  push:
+    branches:
+      - main
+      - "fase-*"
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+  schedule:
+    - cron: "0 8 * * 1"
+
+jobs:
+  build-and-test:
+    name: Build, tests and evaluation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar dependencias base
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential make python3 libssl-dev
+
+      - name: Compilar proyecto
+        run: |
+          make clean
+          make
+
+      - name: Ejecutar pruebas principales
+        run: |
+          make test-fastpath
+          make test-regression
+          make test-streaming
+          make test-guardsketch
+          make test-unit
+
+      - name: Ejecutar evaluacion experimental reproducible
+        env:
+          AGFAST_EVAL_EVENTS: "10000"
+          AGFAST_EVAL_PIDS: "300"
+          AGFAST_EVAL_DIR: "/tmp/agfast_ci_evaluacion"
+        run: |
+          bash scripts/run_evaluation.sh
+
+      - name: Limpiar artefactos locales
+        run: |
+          make clean
+          git status --short
+
+  valgrind:
+    name: Valgrind optional
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar dependencias con Valgrind
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential make python3 libssl-dev valgrind
+
+      - name: Compilar proyecto
+        run: |
+          make clean
+          make
+
+      - name: Ejecutar Valgrind
+        run: |
+          make test-valgrind
+
+      - name: Limpiar artefactos locales
+        run: |
+          make clean
+          git status --short

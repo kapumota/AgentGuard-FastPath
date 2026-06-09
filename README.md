@@ -1,5 +1,9 @@
 ### AgentGuard-C y AgentGuard FastPath
 
+[![AGFast Quality](https://github.com/kapumota/AgentGuard-FastPath/actions/workflows/agfast-quality.yml/badge.svg)](https://github.com/kapumota/AgentGuard-FastPath/actions/workflows/agfast-quality.yml)
+
+[![CI](https://github.com/kapumota/AgentGuard-FastPath/actions/workflows/ci.yml/badge.svg)](https://github.com/kapumota/AgentGuard-FastPath/actions/workflows/ci.yml)
+
 AgentGuard FastPath es un software de análisis defensivo de eventos de seguridad escrito en C. Procesa telemetría en formato JSONL o CSV, aplica una política configurable y produce métricas, alertas, relaciones proceso-archivo-red, líneas de tiempo y puntajes de riesgo.
 
 El repositorio contiene dos componentes:
