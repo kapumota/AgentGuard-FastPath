@@ -171,3 +171,7 @@ ebpf-info:
 	@echo "Soporte eBPF opcional"
 	@echo "La compilacion normal de agfast no requiere eBPF"
 	@echo "Ejecuta: make ebpf-check"
+
+.PHONY: test-guardsketch
+test-guardsketch:
+	bash tests/test_guardsketch.sh
