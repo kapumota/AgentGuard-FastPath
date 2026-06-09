@@ -1,0 +1,3 @@
+{"time":"2026-06-08T10:00:04Z","pid":502,"process":"bash","event":"open","file":"/etc/ssh/sshd_config"}
+{"time":"2026-06-08T10:00:05Z","pid":502,"process":"bash","event":"connect","dst":"malicious.example","domain":"malicious.example","ip":"198.51.100.25"}
+{"time":"2026-06-08T10:00:06Z","pid":800,"process":"worker","event":"open","file":"/tmp/notes.txt"}
