@@ -22,7 +22,7 @@ ROOT_REPORTS = report.json report.html alerts.csv stats.json graph.json timeline
 ROOT_REPORTS += agfast-report.json agfast-report.html agfast-alerts.csv
 ROOT_REPORTS += agfast-stats.json agfast-graph.json agfast-timeline.json agfast-similarity.json
 
-.PHONY: all clean clean-reports install test test-fastpath test-algorithms test-reports benchmark benchmark-csv
+.PHONY: all clean clean-reports install test test-fastpath test-algorithms test-reports test-regression test-valgrind benchmark benchmark-csv
 
 all: dirs $(TARGET) $(FASTPATH_TARGET)
 
@@ -147,5 +147,13 @@ test-reports: all
 	grep -q "AgentGuard FastPath" /tmp/agfast-reports.html
 	grep -q "severity,pid,process" /tmp/agfast-reports.csv
 	@echo "Pruebas de reportes superadas"
+
+
+test-regression: all
+	@echo "Pruebas de regresion FastPath"
+	./tests/test_regression.sh
+
+test-valgrind: all
+	@if command -v valgrind >/dev/null 2>&1; then 	  echo "Prueba Valgrind de agfast"; 	  valgrind --leak-check=full --error-exitcode=1 $(BINDIR)/agfast analyze tests/fixtures/events_regression.jsonl --policy tests/fixtures/policy_regression.json --risk --report /tmp/agfast-valgrind.json >/tmp/agfast-valgrind.out || test $$? -eq 2; 	  python3 -m json.tool /tmp/agfast-valgrind.json >/dev/null; 	else 	  echo "Valgrind no esta instalado; prueba omitida"; 	fi
 
 test-fastpath: test test-algorithms test-reports

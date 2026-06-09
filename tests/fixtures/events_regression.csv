@@ -1,0 +1,7 @@
+time,pid,process,event,file,dst,domain,ip
+2026-06-08T11:00:01Z,500,python,open,/etc/passwd,,,
+2026-06-08T11:00:02Z,500,python,connect,,45.90.10.2,,45.90.10.2
+2026-06-08T11:00:03Z,501,curl,connect,,,malicious.example,
+2026-06-08T11:00:04Z,502,bash,open,/home/alumno/.ssh/id_rsa,,,
+2026-06-08T11:00:05Z,502,bash,connect,,198.51.100.8,,198.51.100.8
+2026-06-08T11:00:06Z,503,nginx,open,/var/log/nginx/access.log,,,
