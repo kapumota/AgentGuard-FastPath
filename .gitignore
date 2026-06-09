@@ -56,3 +56,9 @@ Thumbs.db
 
 # Binarios de prueba
 tests/test_agent
+
+# Fase 9: permitir documentar carpeta de resultados de benchmarks
+!benchmarks/results/
+benchmarks/results/*
+!benchmarks/results/README.md
+!benchmarks/results/.gitkeep
