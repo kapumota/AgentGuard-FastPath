@@ -1,5 +1,10 @@
 ### AgentGuard-C y AgentGuard FastPath
 
+[![AgentGuard-C CI](https://github.com/kapumota/AgentGuard-FastPath/actions/workflows/ci.yml/badge.svg)](https://github.com/kapumota/AgentGuard-FastPath/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/kapumota/AgentGuard-FastPath?label=release)](https://github.com/kapumota/AgentGuard-FastPath/releases)
+[![License](https://img.shields.io/github/license/kapumota/AgentGuard-FastPath)](LICENSE)
+[![Language](https://img.shields.io/github/languages/top/kapumota/AgentGuard-FastPath)](https://github.com/kapumota/AgentGuard-FastPath)
+
 [![AGFast Quality](https://github.com/kapumota/AgentGuard-FastPath/actions/workflows/agfast-quality.yml/badge.svg)](https://github.com/kapumota/AgentGuard-FastPath/actions/workflows/agfast-quality.yml)
 
 [![CI](https://github.com/kapumota/AgentGuard-FastPath/actions/workflows/ci.yml/badge.svg)](https://github.com/kapumota/AgentGuard-FastPath/actions/workflows/ci.yml)
