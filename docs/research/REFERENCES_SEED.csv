@@ -1,0 +1,10 @@
+id,autores,anio,titulo,doi,url,tema,estado
+S001,Tricco et al.,2018,PRISMA Extension for Scoping Reviews (PRISMA-ScR): Checklist and Explanation,10.7326/M18-0850,https://doi.org/10.7326/M18-0850,metodologia,semilla_pendiente_cribado
+S002,Page et al.,2021,The PRISMA 2020 statement: an updated guideline for reporting systematic reviews,10.1136/bmj.n71,https://doi.org/10.1136/bmj.n71,metodologia,semilla_pendiente_cribado
+S003,Cormode y Muthukrishnan,2005,An improved data stream summary: the count-min sketch and its applications,10.1016/j.jalgor.2003.12.001,https://doi.org/10.1016/j.jalgor.2003.12.001,algoritmo_fundacional,semilla_pendiente_cribado
+S004,Ben Mazziane et al.,2022,Analyzing Count Min Sketch with Conservative Updates,10.1016/j.comnet.2022.109315,https://doi.org/10.1016/j.comnet.2022.109315,cms_conservative_update,semilla_pendiente_cribado
+S005,Ajtai et al.,2022,The White-Box Adversarial Data Stream Model,,https://arxiv.org/abs/2204.09136,modelo_adversarial,semilla_pendiente_cribado
+S006,Goyal et al.,2023,"Sometimes, You Aren't What You Do: Mimicry Attacks against Provenance Graph Host Intrusion Detection Systems",10.14722/ndss.2023.24207,https://www.ndss-symposium.org/ndss-paper/sometimes-you-arent-what-you-do-mimicry-attacks-against-provenance-graph-host-intrusion-detection-systems/,mimicry_host,semilla_pendiente_cribado
+S007,Lv et al.,2025,ProvADShield: A Multimodel Ensemble Defender Against Adversarial Attacks on Provenance Graph Host Intrusion Detector,10.1049/ise2/8625988,https://doi.org/10.1049/ise2/8625988,defensa_procedencia,semilla_pendiente_cribado
+S008,PIDSMaker,2026,PIDSMaker: repositorio y documentación de artefacto,,https://github.com/ubc-provenance/PIDSMaker,dataset_artefacto,semilla_pendiente_cribado
+S009,PIDSMaker ThreaTrace,2026,ThreaTrace Ground Truth: documentación de etiquetas,,https://github.com/ubc-provenance/PIDSMaker/tree/main/Ground_Truth/threatrace,etiquetas_artefacto,semilla_pendiente_cribado
