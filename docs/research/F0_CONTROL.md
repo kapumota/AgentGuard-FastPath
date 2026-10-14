@@ -67,3 +67,14 @@ F0 permanece `IN_PROGRESS` hasta documentar todas las evidencias anteriores. No 
 - El manuscrito podrá estar en inglés según los requisitos de la revista.
 - Este parche no modifica código, pruebas, Makefile, CI ni historia Git.
 - No efectuar `commit`, `push`, `merge`, etiquetado ni publicación sin revisión explícita.
+
+#### Avance F0-02. Recuperacion bibliografica dirigida
+
+- Fecha de corte: 2026-10-13.
+- Inventario de trabajo: 15 estudios cientificos candidatos, 2 guias metodologicas y 3 artefactos, todos clasificados en archivos separados.
+- Registros trazables en `BIBLIOGRAPHIC_RECORDS.csv` y `SCREENING_LOG.csv`.
+- Informacion extraida de titulo, resumen o ficha disponible en `EVIDENCE_MATRIX.csv`.
+- Casillas PRISMA finales explicitamente pendientes en `PRISMA_FLOW.md`.
+- No se afirman exportaciones completas, segundo revisor ni lectura sistematica de texto completo.
+- Estado: `F0_02_DOCUMENTED_PENDING_FORMAL_SCREENING`. F0 sigue `IN_PROGRESS`.
+- El siguiente parche debe aportar exportaciones originales, deduplicacion auditable y cribado formal.

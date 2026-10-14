@@ -46,3 +46,16 @@ No se afirma originalidad confirmada. El cribado PRISMA-ScR deberá comprobar si
 - Mecanismos de sketching con claves, amenazas adaptativas y límites matemáticos.
 - Protocolos de evaluación de THEIA E3, OpTC y opciones alternativas para datos de host.
 - Guías para medición de recursos y calidad de detección con evidencia trazable.
+
+#### Avance de matriz F0-02
+
+`BIBLIOGRAPHIC_RECORDS.csv` registra 15 estudios candidatos, dos guias y tres artefactos. `EVIDENCE_MATRIX.csv` contiene una caracterizacion inicial de 15 estudios basada en titulos, resumenes y fichas editoriales. Estos estudios permanecen pendientes de lectura completa y decision formal.
+
+Se identifican cuatro restricciones para la contribucion candidata:
+
+- StreamSpot (`R002`) y CMS (`R001`) impiden reivindicar novedad general en streaming aproximado.
+- Mimicry (`R007`) y defensas de grafos (`R013`, `R014`) impiden reivindicar por si sola la primera evaluacion adversarial.
+- Evaluaciones comparativas (`R011`, `R015`) obligan a definir baselines sencillos y etiquetas comparables.
+- Estudios de atribucion (`R012`) y calidad de logs (`R010`) obligan a separar deteccion de atribucion y a explicitar la calidad de datos.
+
+Estas son inferencias de posicionamiento provisional. La conclusion de novedad solo se aprobara despues de revisar los textos completos y completar el protocolo.
