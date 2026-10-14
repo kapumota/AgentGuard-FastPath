@@ -115,3 +115,9 @@ Conservar exportaciones originales, hashes, estrategias, decisiones, versiones d
 #### Criterio de aprobación
 
 El protocolo estará aprobado cuando se documenten las fuentes accesibles, las cadenas definitivas, el procedimiento de cribado, el responsable y el registro de cambios. La revisión estará completada cuando exista una síntesis con flujo, decisiones y estudios incluidos verificables.
+
+#### Precisiones de F0-03 sobre las unidades contadas
+
+Para el reporte PRISMA se distinguirán `registro`, `informe` y `estudio`. La deduplicación se realiza sobre registros procedentes de exportaciones, no sobre la suma de referencias documentales preparadas en fases anteriores. Una prepublicación y un artículo posterior pueden ser informes de una misma investigación. La coincidencia exacta de DOI o título se utilizará como propuesta de reconciliación, sujeta a validación manual ante conflicto.
+
+El cribado propuesto mediante IA y la clasificación por títulos no constituyen una aprobación humana del artículo. La herramienta reproducible de F0-03 permite verificar el catálogo existente y localizar colisiones en CSV externos, pero no sustituye la recuperación completa de las bases ni autoriza la publicación de conteos PRISMA finales.

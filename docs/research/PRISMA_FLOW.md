@@ -44,3 +44,9 @@ Ninguna cifra de la tabla formal sera reemplazada por cero para encubrir ausenci
 3. Realizar cribado y, cuando sea viable, revision humana independiente.
 4. Completar lectura y extraccion de texto completo.
 5. Generar diagrama y tablas definitivas a partir de registros, sin numeros manuales no trazables.
+
+#### Actualización F0-03
+
+La conciliación dirigida de F0-03 relacionó 9 referencias semilla con el catálogo de 20 fichas de F0-02. No se identificaron claves DOI ni títulos duplicados en las fichas canónicas de ese catálogo. Estos resultados corresponden solamente a los archivos locales de trabajo. **Todas las casillas de identificación y selección PRISMA formal continúan como PENDIENTE.**
+
+No trasladar al diagrama PRISMA la cifra 29 (semillas más fichas) ni inferir 9 duplicados de registros de bases bibliográficas. Se trata de referencias documentales parcialmente redundantes, no de resultados identificados por consultas sistemáticas independientes.
