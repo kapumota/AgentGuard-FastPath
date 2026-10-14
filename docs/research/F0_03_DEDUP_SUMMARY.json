@@ -1,0 +1,14 @@
+{
+  "alcance": "conciliacion_catalogo_dirigido_no_flujo_prisma",
+  "artefactos": 3,
+  "decisiones_finales_de_inclusion": 0,
+  "duplicados_por_doi_en_catalogo": 0,
+  "duplicados_por_titulo_en_catalogo": 0,
+  "exportaciones_formales_integradas": 0,
+  "fichas_catalogo_f0_02": 20,
+  "guias_metodologicas": 2,
+  "obras_cientificas_candidatas": 15,
+  "prisma_final": "pendiente",
+  "referencias_semilla_f0_01": 9,
+  "relaciones_semilla_catalogo": 9
+}

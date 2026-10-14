@@ -1,0 +1,10 @@
+id_semilla,id_canonico,tipo_relacion,doi_coincidente,titulo_coincidente,estado_documental
+S001,G001,mismo_doi,si,si,verificado_documentalmente
+S002,G002,mismo_doi,si,si,verificado_documentalmente
+S003,R001,mismo_doi,si,si,verificado_documentalmente
+S004,R004,mismo_doi,si,si,verificado_documentalmente
+S005,R003,version_editorial,no,si,requiere_revision_editorial
+S006,R007,mismo_doi,si,si,verificado_documentalmente
+S007,R013,mismo_doi,si,si,verificado_documentalmente
+S008,A001,mismo_artefacto,no,si,verificado_documentalmente
+S009,A002,recurso_relacionado,no,no,ruta_especifica_pendiente

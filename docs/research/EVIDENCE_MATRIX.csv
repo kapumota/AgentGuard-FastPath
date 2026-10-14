@@ -1,0 +1,16 @@
+id_obra,metodo_o_aporte,fuente_datos,ground_truth_resumen,metrica_o_objetivo,evidencia_disponible,limite_para_agentguard,estado_lectura
+R001,CMS y conteo aproximado,flujo de datos general,no_aplica,conteo y consulta de frecuencias,especificacion algoritmica,CMS no es un metodo IDS ni una defensa adversarial,titulo_y_resumen_o_ficha_editorial
+R002,sketches de grafos heterogeneos,"flujos de grafos, estudio incluye seguridad de host",simulado_según_resumen,deteccion de anomalias en streaming,evaluacion experimental reportada,Una aplicacion de grafos no equivale a ranking de PID,titulo_y_resumen_o_ficha_editorial
+R003,algoritmos de streaming bajo adversario white-box,flujo adaptativo teorico,no_aplica,garantias y limites teoricos,teoremas segun resumen,No afirmar que todas las garantias aplican a CMS,titulo_y_resumen_o_ficha_editorial
+R004,CMS con conservative update,trazas sinteticas y reales indicadas en resumen,no_aplica,error de estimacion,cotas y evaluacion,No implica robustez a todos los adversarios,titulo_y_resumen_o_ficha_editorial
+R005,CountSketch adaptativo,vectores y consultas adaptativas,no_aplica,error ante consultas adaptativas,pruebas teoricas,CountSketch diferente de Count-Min Sketch,titulo_y_resumen_o_ficha_editorial
+R006,estudio industrial P-EDR,"entrevistas, cuestionario y mediciones",no_aplica,sobrecarga y costo de analisis,medicion empírica,No demuestra rendimiento de AgentGuard,titulo_y_resumen_o_ficha_editorial
+R007,ataques de mimicry a Prov-HIDS,"datasets publicos, escenarios de ataque",por_verificar,exito de evasion,evaluacion adversarial,No extrapolar porcentaje a otro detector,titulo_y_resumen_o_ficha_editorial
+R008,KAIROS con procedencia temporal,datasets benchmark,por_verificar,deteccion y reconstruccion,evaluacion comparativa,Arquitectura GNN distinta,titulo_y_resumen_o_ficha_editorial
+R009,analisis de peor caso CMS-CU,analisis matematico,no_aplica,error promedio,cotas teoricas,Preprint sin atribucion de revision editorial,titulo_y_resumen_o_ficha_editorial
+R010,calidad de corpus de auditoria,datasets de endpoint,por_verificar,composicion y sesgo de corpus,analisis empirico,Importancia del contexto benigno y etiquetas,titulo_y_resumen_o_ficha_editorial
+R011,comparativa unificada de PIDS,datasets DARPA segun resumen,por_verificar,calidad de deteccion y limites,comparativa publicada,Exige baselines simples y equivalencia,titulo_y_resumen_o_ficha_editorial
+R012,"ORTHRUS, calidad de atribucion",grafos de procedencia,por_verificar,nodos inspeccionados y atribucion,comparativa publicada,No confundir alerta con evidencia atribuible,titulo_y_resumen_o_ficha_editorial
+R013,ensemble de PIDS adversariales,dataset propio segun resumen,por_verificar,recall de nodos maliciosos,experimentos reportados,Comparador metodologico no baseline ligero,titulo_y_resumen_o_ficha_editorial
+R014,contrastive learning y grafos manipulados,datasets de procedencia segun preprint,por_verificar,robustez a manipulacion,resultados reportados en preprint,Revisar version formal posterior,titulo_y_resumen_o_ficha_editorial
+R015,framework de evaluacion PIDS,datasets de procedencia normalizados,versiones_multiples_por_verificar,evaluacion y reproducibilidad,framework y benchmark,No reutilizar labels sin comprobar la unidad,titulo_y_resumen_o_ficha_editorial

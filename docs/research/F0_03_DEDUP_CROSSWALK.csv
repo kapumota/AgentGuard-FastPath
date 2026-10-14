@@ -1,0 +1,10 @@
+id_semilla,id_canonico,tipo_relacion,estado_documental,justificacion
+S001,G001,mismo_doi,verificado_documentalmente,"Guía PRISMA-ScR, no pertenece al flujo de estudios"
+S002,G002,mismo_doi,verificado_documentalmente,"Guía PRISMA 2020, no pertenece al flujo de estudios"
+S003,R001,mismo_doi,verificado_documentalmente,Obra fundacional previa a 2010
+S004,R004,mismo_doi,verificado_documentalmente,Artículo de CMS con conservative update
+S005,R003,version_editorial,requiere_revision_editorial,"La semilla es preprint y R003 es publicación de ACM, verificar equivalencia en texto completo"
+S006,R007,mismo_doi,verificado_documentalmente,Trabajo NDSS sobre ataques de imitación
+S007,R013,mismo_doi,verificado_documentalmente,Artículo sobre defensas adversariales de procedencia
+S008,A001,mismo_artefacto,verificado_documentalmente,Referencia al mismo repositorio de PIDSMaker
+S009,A002,recurso_relacionado,ruta_especifica_pendiente,La semilla cita una ruta de etiquetas aún no verificada

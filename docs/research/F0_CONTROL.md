@@ -67,3 +67,26 @@ F0 permanece `IN_PROGRESS` hasta documentar todas las evidencias anteriores. No 
 - El manuscrito podrá estar en inglés según los requisitos de la revista.
 - Este parche no modifica código, pruebas, Makefile, CI ni historia Git.
 - No efectuar `commit`, `push`, `merge`, etiquetado ni publicación sin revisión explícita.
+
+#### Avance F0-02. Recuperacion bibliografica dirigida
+
+- Fecha de corte: 2026-10-13.
+- Inventario de trabajo: 15 estudios cientificos candidatos, 2 guias metodologicas y 3 artefactos, todos clasificados en archivos separados.
+- Registros trazables en `BIBLIOGRAPHIC_RECORDS.csv` y `SCREENING_LOG.csv`.
+- Informacion extraida de titulo, resumen o ficha disponible en `EVIDENCE_MATRIX.csv`.
+- Casillas PRISMA finales explicitamente pendientes en `PRISMA_FLOW.md`.
+- No se afirman exportaciones completas, segundo revisor ni lectura sistematica de texto completo.
+- Estado: `F0_02_DOCUMENTED_PENDING_FORMAL_SCREENING`. F0 sigue `IN_PROGRESS`.
+- El siguiente parche debe aportar exportaciones originales, deduplicacion auditable y cribado formal.
+
+#### Avance F0-03. Conciliación verificable y formulario de cribado
+
+- Corte de la evidencia documental: 2026-10-13.
+- Se concilian las 9 referencias semilla con 20 fichas existentes, sin eliminar archivos fuente.
+- Se incorpora auditoría reproducible mediante `scripts/research/prisma_audit.py`.
+- Se crea un formulario de 15 candidatos con propuestas explícitamente pendientes de validación humana.
+- Se preserva la separación de estudios, informes y registros PRISMA.
+- No existen exportaciones completas de las bases ni decisiones de texto completo que permitan cerrar el flujo PRISMA.
+- Estado de subentrega: `F0_03_CATALOGO_CONCILIADO_SCREENING_PENDIENTE`.
+- F0 permanece `IN_PROGRESS`.
+- El PR 19 se fusionó incluyendo F0-01. F0-02 y F0-03 requieren un PR nuevo.
